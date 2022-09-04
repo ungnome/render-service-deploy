@@ -1,0 +1,20 @@
+name: 'Render Service Deploy'
+description: 'Trigger and track deployment progress of a Render service'
+
+branding:
+  icon: truck
+  color: blue
+
+author: 'ungnome'
+
+inputs:
+  webhook:
+    required: true
+    description: 'Serice deploy webhook'
+  api-key:
+    required: true
+    description: 'API Key'
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
