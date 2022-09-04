@@ -1,6 +1,6 @@
 ## render-service-deploy
 
-Trigger and track deployment progress of a Render service
+Trigger and track progress of a Render service deployment.
 
 ## Usage
 
