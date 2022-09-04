@@ -10,7 +10,8 @@
     "format-check": "prettier --check '**/*.ts'",
     "lint": "eslint src/**/*.ts",
     "package": "ncc build --source-map --license licenses.txt",
-    "all": "pnpm run build && pnpm run format && pnpm run lint && pnpm run package"
+    "all": "pnpm run build && pnpm run format && pnpm run lint && pnpm run package",
+    "release": "pnpm exec semantic-release"
   },
   "keywords": [
     "actions",
