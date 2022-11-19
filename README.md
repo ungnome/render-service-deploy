@@ -11,7 +11,7 @@ Trigger and track progress of a Render service deployment.
 | deploy-hook | `string` | `true`   | Render Service Deploy hook | `https://api.render.com/deploy/srv-XXYYZZ?key=AABBCC` |
 | api-key     | `string` | `true`   | Render Service API Key     | `rnd_abcdefghijklmnopqrstuvwxyz123`                   |
 
-### webhook
+### deploy-hook
 
 This is the Deploy Hook that is automatically generated for your Render service.
 
@@ -22,3 +22,9 @@ This is the Deploy Hook that is automatically generated for your Render service.
 ### api-key
 
 [Generate Render API Key](https://render.com/docs/api#creating-an-api-key)
+
+### Outputs
+
+| Name              | Type     | Description                        | Example                                                             |
+| ----------------- | -------- | ---------------------------------- | ------------------------------------------------------------------- |
+| deploy-status-url | `string` | URL for checking deployment status | `https://api.render.com/v1/services/{serviceId}/deploys/{deployId}` |
