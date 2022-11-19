@@ -15,6 +15,10 @@ inputs:
     required: true
     description: 'API Key'
 
+outputs:
+  deploy-status-url:
+    description: 'URL for deployment status'
+
 runs:
   using: 'node16'
   main: 'dist/index.js'
