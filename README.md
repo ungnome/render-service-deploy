@@ -6,10 +6,10 @@ Trigger and track progress of a Render service deployment.
 
 ### Inputs
 
-| Name    | Type     | Required | Description                | Example                                               |
-| ------- | -------- | -------- | -------------------------- | ----------------------------------------------------- |
-| webhook | `string` | `true`   | Render Service Deploy hook | `https://api.render.com/deploy/srv-XXYYZZ?key=AABBCC` |
-| api-key | `string` | `true`   | Render Service API Key     | `rnd_abcdefghijklmnopqrstuvwxyz123`                   |
+| Name        | Type     | Required | Description                | Example                                               |
+| ----------- | -------- | -------- | -------------------------- | ----------------------------------------------------- |
+| deploy-hook | `string` | `true`   | Render Service Deploy hook | `https://api.render.com/deploy/srv-XXYYZZ?key=AABBCC` |
+| api-key     | `string` | `true`   | Render Service API Key     | `rnd_abcdefghijklmnopqrstuvwxyz123`                   |
 
 ### webhook
 
