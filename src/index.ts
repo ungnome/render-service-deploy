@@ -9,9 +9,12 @@ async function main(): Promise<void> {
   const apiKey = core.getInput('api-key', { required: true });
   const serviceId = utils.getServiceId(deployHook);
 
+  // render rest api base
+  const renderApiBaseUrl = 'https://api.render.com/v1';
+
   // setup axios client
   const renderApi = axios.create({
-    baseURL: 'https://api.render.com/v1',
+    baseURL: renderApiBaseUrl,
     headers: {
       Accept: 'application/json',
       Authorization: `Bearer ${apiKey}`
@@ -24,38 +27,9 @@ async function main(): Promise<void> {
     console.debug('triggering service deployment');
     const deployId = await utils.triggerDeploy(deployHook, renderApi);
 
-    // track progress
-    core.info('deployment in progress');
-    let deployInProgress = true;
-    while (deployInProgress) {
-      const status: string = await utils.getDeployStatus(serviceId, deployId, renderApi);
-
-      switch (status) {
-        case 'build_in_progress':
-          core.debug('build in progress');
-          break;
-        case 'created':
-          core.debug('deployment created');
-          break;
-        case 'canceled':
-          deployInProgress = false;
-          core.info('deployment canceled');
-          break;
-        case 'build_failed':
-          deployInProgress = false;
-          core.error('build failed');
-          break;
-        case 'live':
-          core.debug('service is live!');
-          deployInProgress = false;
-          core.info('deployment compleete');
-          break;
-        default:
-          core.info(status);
-          deployInProgress = status.includes('fail') ? false : true;
-          break;
-      }
-    }
+    // output deploy status url
+    const deployStatusUrl = `${renderApiBaseUrl}/services/${serviceId}/deploys/${deployId}`;
+    core.setOutput('deploy-status-url', deployStatusUrl);
   } else {
     core.error('service id not found in deploy webhook');
   }
